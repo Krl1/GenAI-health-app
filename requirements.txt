@@ -1,0 +1,15 @@
+bert-score==0.3.13
+fastapi==0.115.5
+matplotlib==3.9.2
+nbconvert==7.16.4
+nltk==3.9.1
+notebook==7.2.2
+openai==0.28.1
+pandas==2.2.3
+pytest==8.3.3
+python-dotenv==1.0.1
+rouge_score==0.1.2
+scipy==1.14.1
+seaborn==0.13.2
+transformers==4.46.2
+uvicorn==0.32.0

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Form</title>
+</head>
+
+<body>
+    <h1>Submit Your Query</h1>
+    <form id="queryForm">
+        <label for="user_query">Enter your query:</label>
+        <input type="text" id="user_query" name="user_query" required>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="response"></div>
+    <script>
+        document.getElementById("queryForm").addEventListener("submit", async (e) => {
+            e.preventDefault(); // Zatrzymaj domyślne działanie formularza
+
+            const userQuery = document.getElementById("user_query").value;
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/query", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ user_query: userQuery }),
+                });
+
+                const data = await response.json();
+                document.getElementById("response").innerText = data.response;
+            } catch (error) {
+                document.getElementById("response").innerText = "Error: " + error.message;
+            }
+        });
+    </script>
+</body>
+
+</html>
